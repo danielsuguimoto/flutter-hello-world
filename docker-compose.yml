@@ -2,6 +2,8 @@ version: "3.7"
 services:
   app:
     image: danielsuguimoto/flutter:latest
+    ports:
+      - 80:80
     privileged: true
     tty: true
     volumes:

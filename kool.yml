@@ -5,9 +5,19 @@ scripts:
   doctor: kool run flutter doctor
 
   connect:
+    - kool run connect:local
+    - kool run connect:docker
+
+  connect:local:
+    - adb kill-server
     - adb tcpip 5555
     - adb connect $DEVICE_IP:5555
+    - adb devices
+
+  connect:docker:
+    - kool run adb kill-server
     - kool run adb connect $DEVICE_IP:5555
+    - kool run adb devices
 
   install:
     - kool run flutter clean
@@ -18,4 +28,4 @@ scripts:
     - cp .env.example .env
     - kool start
     - kool run flutter clean
-    - kool run pub get
+    - kool run flutter pub get
