@@ -1,0 +1,21 @@
+scripts:
+  flutter: kool exec app flutter
+  adb: kool exec app adb
+
+  doctor: kool run flutter doctor
+
+  connect:
+    - adb tcpip 5555
+    - adb connect $DEVICE_IP:5555
+    - kool run adb connect $DEVICE_IP:5555
+
+  install:
+    - kool run flutter clean
+    - kool run flutter pub get
+    - kool run flutter run
+
+  setup:
+    - cp .env.example .env
+    - kool start
+    - kool run flutter clean
+    - kool run pub get

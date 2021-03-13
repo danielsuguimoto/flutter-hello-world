@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  app:
+    image: danielsuguimoto/flutter:latest
+    privileged: true
+    tty: true
+    volumes:
+      - .:/app:delegated
+      - /dev/bus/usb:/dev/bus/usb
+    networks:
+     - kool_local
+     - kool_global
+
+networks:
+  kool_local:
+  kool_global:
+    external: true
+    name: "${KOOL_GLOBAL_NETWORK:-kool_global}"
