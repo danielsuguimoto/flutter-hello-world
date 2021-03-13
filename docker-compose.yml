@@ -9,6 +9,7 @@ services:
     volumes:
       - .:/app:delegated
       - /dev/bus/usb:/dev/bus/usb
+      - /app/.dart_tool
     networks:
      - kool_local
      - kool_global
